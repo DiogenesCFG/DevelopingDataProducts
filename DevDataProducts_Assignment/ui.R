@@ -59,7 +59,7 @@ shinyUI(navbarPage("Optimizing Common Utility Functions",
             ),
             mainPanel(
                h3("Plot of optimal consumption basket"), 
-               plotOutput("Quasilinear")
+               plotOutput("CES")
             )
             )
 ))
