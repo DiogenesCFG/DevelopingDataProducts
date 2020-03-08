@@ -64,6 +64,7 @@ shinyServer(function(input, output) {
     
     output$CES <- renderPlot({
         ces_x <- 1:200
+        ces_y <- 1:200
         ces_px <- input$ces_Px
         ces_py <- input$ces_Py
         ces_I <- input$ces_Income
@@ -83,6 +84,7 @@ shinyServer(function(input, output) {
         ces_ut <- ces_alpha * ces_x_op ^ (-ces_rho) + 
             (1 - ces_alpha) * ces_y_op ^ (-ces_rho)
         ces_Y <- ((ces_ut - (ces_alpha * (ces_x ^ (-ces_rho)))) / (1 - ces_alpha)) ^ (-1 / ces_rho)
+        ces_X <- ((ces_ut - ((1 - ces_alpha) * (ces_y ^ (-ces_rho)))) / ces_alpha) ^ (-1 / ces_rho)
 
         
         ces_x_leg <- as.character(round(ces_x_op, 2))
@@ -94,6 +96,7 @@ shinyServer(function(input, output) {
         plot(ces_x, ces_BC, xlab = "X", type = "l", ylab = "Y", main = "CES optimization", 
              xlim = c(0, 200), ylim = c(0, 200), col = "red", lwd = 2)
         lines(ces_x, ces_Y, type = "l", col = "blue", lwd = 2)
+        lines(ces_X, ces_y, type = "l", col = "blue", lwd = 2)
         points(ces_x_op, ces_y_op, pch = 19, cex = 2)
         lines(x = c(0, ces_x_op), y = c(ces_y_op, ces_y_op), lty = 3)
         lines(x = c(ces_x_op, ces_x_op), y = c(0, ces_y_op), lty = 3)
