@@ -1,0 +1,55 @@
+---
+title: "Optimizing common utility Functions"
+author: "Diógenes Cruz Figueroa García"
+date: "8/3/2020"
+output: 
+     ioslides_presentation:
+          widescreen: TRUE
+          smaller: TRUE
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Utility Functions
+
+In Economics, it is common to have to maximize utility functions subject to 
+some budget constraint, and find the optimal consumption basket.
+
+With the traditional chalkboard, it is somewhat hard to convey the idea of what 
+happens when prices or income changes.
+
+The idea with this shiny app is to make it more interactive to students to see 
+what happens to optimal consumption baskets when parameters change.
+
+## Setting the app
+
+To see how an optimal utility basket plot looks, let's create some data using 
+a simple cobb douglas function:
+
+```{r PlottingCD, warning = FALSE, message = FALSE, comment = FALSE, echo = TRUE, fig.width=4, fig.height=4, fig.align = "center"}
+x <- 1:200
+y <- 2500/x
+plot(x, y, col = "blue", type = "l", xlim = c(0, 200), 
+     ylim = c(0, 200), lwd = 2)
+points(50, 50, cex = 2, pch = 19)
+lines(x, 100 - x, col = "red", lwd = 2)
+
+```
+
+## Justifying the APP
+
+Having to plot many times in the chalkboard several plots is inconvenient, for 
+sometimes they are not symetrical, and you cannot see slowly how the plot changes
+as the parameter change.
+
+A shiny app can simulate the numbers of several functions, plot them, and allow 
+the user to manipulate the parameters to look at changes in the optimal consumption 
+basket right at the moment.
+
+## Shiny App Interface
+The interface is really straight forward, with a side panel to change the parameters, 
+and a main panel with the plot sensible to changes in the parameters.
+
+![Shiny App](".\\shinyapp.png")
