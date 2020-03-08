@@ -10,9 +10,7 @@ output:
      
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+
 
 ## Utility Functions
 
@@ -30,15 +28,17 @@ what happens to optimal consumption baskets when parameters change.
 To see how an optimal utility basket plot looks, let's create some data using 
 a simple cobb douglas function:
 
-```{r PlottingCD, warning = FALSE, message = FALSE, comment = FALSE, echo = TRUE, fig.width=4, fig.height=4, fig.align = "center"}
+
+```r
 x <- 1:200
 y <- 2500/x
 plot(x, y, col = "blue", type = "l", xlim = c(0, 200), 
      ylim = c(0, 200), lwd = 2)
 points(50, 50, cex = 2, pch = 19)
 lines(x, 100 - x, col = "red", lwd = 2)
-
 ```
+
+<img src="Pitch_files/figure-html/PlottingCD-1.png" style="display: block; margin: auto;" />
 
 ## Justifying the APP
 
