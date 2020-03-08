@@ -54,4 +54,9 @@ basket right at the moment.
 The interface is really straight forward, with a side panel to change the parameters, 
 and a main panel with the plot sensible to changes in the parameters.
 
-![Shiny App]("shinyapp.png")
+The interface has a side panel to control the function parameters, such as the 
+preference weight and the elasticity of substitution.
+
+The side panel can also control the prices and income for the budget constraint.
+
+[Click here to go the the app](https://diogenescfg.shinyapps.io/DevDataProducts_Assignment/)

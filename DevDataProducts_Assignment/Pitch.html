@@ -3124,7 +3124,7 @@ slide:not(.current) .plotly.html-widget{
           </hgroup>
   </slide>
 
-<slide class=""><hgroup><h2>Utility Functions</h2></hgroup><article  class="smaller " id="utility-functions">
+<slide class=""><hgroup><h2>Utility Functions</h2></hgroup><article  id="utility-functions" class="smaller ">
 
 <p>In Economics, it is common to have to maximize utility functions subject to some budget constraint, and find the optimal consumption basket.</p>
 
@@ -3132,7 +3132,7 @@ slide:not(.current) .plotly.html-widget{
 
 <p>The idea with this shiny app is to make it more interactive to students to see what happens to optimal consumption baskets when parameters change.</p>
 
-</article></slide><slide class=""><hgroup><h2>Setting the app</h2></hgroup><article  class="smaller " id="setting-the-app">
+</article></slide><slide class=""><hgroup><h2>Setting the app</h2></hgroup><article  id="setting-the-app" class="smaller ">
 
 <p>To see how an optimal utility basket plot looks, let’s create some data using a simple cobb douglas function:</p>
 
@@ -3145,17 +3145,21 @@ lines(x, 100 - x, col = &quot;red&quot;, lwd = 2)</pre>
 
 <p><img src="data:image/png;base64,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" style="display: block; margin: auto;" /></p>
 
-</article></slide><slide class=""><hgroup><h2>Justifying the APP</h2></hgroup><article  class="smaller " id="justifying-the-app">
+</article></slide><slide class=""><hgroup><h2>Justifying the APP</h2></hgroup><article  id="justifying-the-app" class="smaller ">
 
 <p>Having to plot many times in the chalkboard several plots is inconvenient, for sometimes they are not symetrical, and you cannot see slowly how the plot changes as the parameter change.</p>
 
 <p>A shiny app can simulate the numbers of several functions, plot them, and allow the user to manipulate the parameters to look at changes in the optimal consumption basket right at the moment.</p>
 
-</article></slide><slide class=""><hgroup><h2>Shiny App Interface</h2></hgroup><article  class="smaller " id="shiny-app-interface">
+</article></slide><slide class=""><hgroup><h2>Shiny App Interface</h2></hgroup><article  id="shiny-app-interface" class="smaller ">
 
 <p>The interface is really straight forward, with a side panel to change the parameters, and a main panel with the plot sensible to changes in the parameters.</p>
 
-<img src='%22shinyapp.png%22' title='fig:'/><p class='caption'>Shiny App</p></article></slide>
+<p>The interface has a side panel to control the function parameters, such as the preference weight and the elasticity of substitution.</p>
+
+<p>The side panel can also control the prices and income for the budget constraint.</p>
+
+<p><a href='https://diogenescfg.shinyapps.io/DevDataProducts_Assignment/' title=''>Click here to go the the app</a></p></article></slide>
 
 
   <slide class="backdrop"></slide>
