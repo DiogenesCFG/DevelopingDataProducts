@@ -24,7 +24,7 @@ shinyServer(function(input, output) {
         points(cd_x_op, cd_y_op, pch = 19, cex = 2)
         lines(x = c(0, cd_x_op), y = c(cd_y_op, cd_y_op), lty = 3)
         lines(x = c(cd_x_op, cd_x_op), y = c(0, cd_y_op), lty = 3)
-        text(cd_x_leg_pos, cd_y_leg_pos + 25, label = cd_for_legend)
+        text(cd_x_leg_pos, cd_y_leg_pos, label = cd_for_legend)
     })
     
     output$Quasilinear <- renderPlot({
@@ -59,12 +59,45 @@ shinyServer(function(input, output) {
         points(ql_x_op, ql_y_op, pch = 19, cex = 2)
         lines(x = c(0, ql_x_op), y = c(ql_y_op, ql_y_op), lty = 3)
         lines(x = c(ql_x_op, ql_x_op), y = c(0, ql_y_op), lty = 3)
-        text(ql_x_leg_pos, ql_y_leg_pos + 25, label = ql_for_legend)
+        text(ql_x_leg_pos, ql_y_leg_pos, label = ql_for_legend)
     })
     
     output$CES <- renderPlot({
+        ces_x <- 1:200
+        ces_px <- input$ces_Px
+        ces_py <- input$ces_Py
+        ces_I <- input$ces_Income
+        ces_alpha <- input$ces_alpha
+        ces_rho <- as.numeric(input$ces_rho)
+        ces_BC <- (ces_I / ces_py) - (ces_x * ces_px / ces_py)
+        
+        ces_x_op <- ces_I * 
+            (ces_px + 
+                 (ces_py * (((1 - ces_alpha) / ces_alpha) * (ces_px / ces_py)) ^ (1 / (1 + ces_rho)))) ^ (-1)
+        
+        ces_y_op <- ces_I * 
+            (ces_py + 
+                 (ces_px * ((ces_alpha / (1 - ces_alpha)) * (ces_py / ces_px)) ^ (1 / (1 + ces_rho)))) ^ (-1)        
         
         
+        ces_ut <- ces_alpha * ces_x_op ^ (-ces_rho) + 
+            (1 - ces_alpha) * ces_y_op ^ (-ces_rho)
+        ces_Y <- ((ces_ut - (ces_alpha * (ces_x ^ (-ces_rho)))) / (1 - ces_alpha)) ^ (-1 / ces_rho)
+
+        
+        ces_x_leg <- as.character(round(ces_x_op, 2))
+        ces_y_leg <- as.character(round(ces_y_op, 2))
+        ces_for_legend <- paste("X = ", ces_x_leg, ", Y = ", ces_y_leg)
+        ces_x_leg_pos <- if(ces_x_op > 150){ces_x_op - 25} else {ces_x_op + 25}
+        ces_y_leg_pos <- if(ces_y_op > 150){ces_y_op - 25} else {ces_y_op + 25}
+        
+        plot(ces_x, ces_BC, xlab = "X", type = "l", ylab = "Y", main = "CES optimization", 
+             xlim = c(0, 200), ylim = c(0, 200), col = "red", lwd = 2)
+        lines(ces_x, ces_Y, type = "l", col = "blue", lwd = 2)
+        points(ces_x_op, ces_y_op, pch = 19, cex = 2)
+        lines(x = c(0, ces_x_op), y = c(ces_y_op, ces_y_op), lty = 3)
+        lines(x = c(ces_x_op, ces_x_op), y = c(0, ces_y_op), lty = 3)
+        text(ces_x_leg_pos, ces_y_leg_pos, label = ces_for_legend)
     })
 
     
