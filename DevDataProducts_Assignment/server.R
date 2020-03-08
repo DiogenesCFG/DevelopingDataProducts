@@ -25,7 +25,7 @@ shinyServer(function(input, output) {
         lines(x = c(0, cd_x_op), y = c(cd_y_op, cd_y_op), lty = 3)
         lines(x = c(cd_x_op, cd_x_op), y = c(0, cd_y_op), lty = 3)
         text(cd_x_leg_pos, cd_y_leg_pos, label = cd_for_legend)
-    })
+    }, width = 500, height = 500)
     
     output$Quasilinear <- renderPlot({
         ql_x <- 1:200
@@ -60,7 +60,7 @@ shinyServer(function(input, output) {
         lines(x = c(0, ql_x_op), y = c(ql_y_op, ql_y_op), lty = 3)
         lines(x = c(ql_x_op, ql_x_op), y = c(0, ql_y_op), lty = 3)
         text(ql_x_leg_pos, ql_y_leg_pos, label = ql_for_legend)
-    })
+    }, width = 500, height = 500)
     
     output$CES <- renderPlot({
         ces_x <- 1:200
@@ -101,7 +101,7 @@ shinyServer(function(input, output) {
         lines(x = c(0, ces_x_op), y = c(ces_y_op, ces_y_op), lty = 3)
         lines(x = c(ces_x_op, ces_x_op), y = c(0, ces_y_op), lty = 3)
         text(ces_x_leg_pos, ces_y_leg_pos, label = ces_for_legend)
-    })
+    }, width = 500, height = 500)
 
     
 })
